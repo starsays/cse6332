@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Vanilla JavaScript App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weihan Shan 177458</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .result { margin-top: 20px; }
+    </style>
 </head>
-
 <body>
-  <main>
-    <h1>Vanilla JavaScript App</h1>
-  </main>
-</body>
+    <h1>Weihan Shan 177458</h1>
+    <img src="jpg/dan.jpg">
+    <div>
+        <label for="room">Enter Room Number:</label>
+        <input type="text" id="room" name="room">
+        <button onclick="lookupRoom()">Lookup</button>
+    </div>
+    <div>
+        <label for="teln">Enter Telephone Number:</label>
+        <input type="text" id="teln" name="teln">
+        <button onclick="lookupTeln()">Lookup</button>
+    </div>
+    <div>
+        <label for="telnUpdate">Enter Telephone Number to Update:</label>
+        <input type="text" id="telnUpdate" name="telnUpdate">
+        <label for="newDescript">New Description:</label>
+        <input type="text" id="newDescript" name="newDescript">
+        <button onclick="updateDescription()">Update</button>
+    </div>
+    <div class="result" id="result"></div>
 
+    <script src="script.js"></script>
+</body>
 </html>
+
