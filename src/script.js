@@ -25,6 +25,22 @@ function lookupTeln() {
     displayResult(result);
 }
 
+function lookupTelnRange() {
+    const startTeln = document.getElementById("startTeln").value;
+    const endTeln = document.getElementById("endTeln").value;
+    
+    if (startTeln === "" || endTeln === "") {
+        document.getElementById("result").innerText = "Please enter both start and end telephone numbers.";
+        return;
+    }
+
+    const result = data.filter(person => {
+        return person.teln >= startTeln && person.teln <= endTeln;
+    });
+
+    displayResult(result);
+}
+
 function updateDescription() {
     const teln = document.getElementById("telnUpdate").value;
     const newDescript = document.getElementById("newDescript").value;
