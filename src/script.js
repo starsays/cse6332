@@ -1,21 +1,19 @@
 const data = [
-    { name: "ann", room: "19", pic: "", teln: "817001", descript: "ann is a manager" },
-    { name: "bob", room: "24", pic: "", teln: "", descript: "bob is a cat" },
-    { name: "cat", room: "", pic: "jpg/cat.jpg", teln: "817005", descript: "cat is also a cat" },
-    { name: "dan", room: "108", pic: "jpg/dan.jpg", teln: "816005", descript: "" },
-    { name: "eve", room: "95", pic: "", teln: "0", descript: "eve is a computer" },
-    { name: "finn", room: "42", pic: "jpg/finn.jpg", teln: "", descript: "finn is no one important" },
-    { name: "gary", room: "", pic: "", teln: "888001", descript: "gary can fly" },
-    { name: "hank", room: "80", pic: "", teln: "901901", descript: "hank can not fly" },
-    { name: "ima", room: "60", pic: "jpg/ima.jpg", teln: "202020", descript: "" },
-    { name: "jan", room: "61", pic: "", teln: "", descript: "president jan is amazing" },
-    { name: "ken", room: "", pic: "", teln: "817005", descript: "" },
-    { name: "lem", room: "5", pic: "jpg/lem.jpg", teln: "818000", descript: "no way lem can fly" }
+    { name: "apple", cost: "19", pic: "jpg/apple.jpg", descript: "apples are good" },
+    { name: "berry", cost: "20", pic: "", descript: "berries are great" },
+    { name: "carl", cost: "", pic: "jpg/carl.jpg", descript: "carl is also a cat" },
+    { name: "dave", cost: "0", pic: "jpg/dave.jpg", descript: "who is Dave" },
+    { name: "eve", cost: "95", pic: "", descript: "eve is a computer" },
+    { name: "fig", cost: "42", pic: "", descript: "figs are cheap" },
+    { name: "grape", cost: "", pic: "", descript: "grapes red or green" },
+    { name: "helya", cost: "1000", pic: "jpg/helya.jpg", descript: "helya is very smart" },
+    { name: "imtiaz", cost: "600", pic: "", descript: "" },
+    { name: "sinong", cost: "999", pic: "jpg/sinong.jpg", descript: "sinong is also very smart" }
 ];
 
-function lookupRoom() {
-    const room = document.getElementById("room").value;
-    const result = data.filter(person => person.room === room);
+function lookupName() {
+    const name = document.getElementById("name").value;
+    const result = data.filter(person => person.name === name);
     displayResult(result);
 }
 
@@ -25,31 +23,62 @@ function lookupTeln() {
     displayResult(result);
 }
 
-function lookupTelnRange() {
-    const startTeln = document.getElementById("startTeln").value;
-    const endTeln = document.getElementById("endTeln").value;
+function lookupCostRange() {
+    const startCost = document.getElementById("startCost").value;
+    const endCost = document.getElementById("endCost").value;
     
-    if (startTeln === "" || endTeln === "") {
-        document.getElementById("result").innerText = "Please enter both start and end telephone numbers.";
+    if (startCost === "" || endCost === "") {
+        document.getElementById("result").innerText = "Please enter both start and end Cost.";
         return;
     }
 
     const result = data.filter(person => {
-        return person.teln >= startTeln && person.teln <= endTeln;
+        return person.cost >= startCost && person.cost <= endCost;
     });
 
     displayResult(result);
 }
 
 function updateDescription() {
-    const teln = document.getElementById("telnUpdate").value;
+    const name = document.getElementById("nameUpdate").value;
     const newDescript = document.getElementById("newDescript").value;
-    const person = data.find(person => person.teln === teln);
+    const person = data.find(person => person.name === name);
     if (person) {
         person.descript = newDescript;
         displayResult([person]);
     } else {
-        document.getElementById("result").innerText = "No person found with the given telephone number.";
+        document.getElementById("result").innerText = "No person found with the given name.";
+    }
+}
+
+function deleteUser() {
+    const name = document.getElementById("nameDelete").value;
+    const index = data.findIndex(person => person.name === name);
+    if (index !== -1) {
+        data.splice(index, 1);
+        document.getElementById("result").innerText = `${name} has been deleted.`;
+    } else {
+        document.getElementById("result").innerText = "No person found with the given name.";
+    }
+}
+
+function addUser() {
+    const newName = document.getElementById("newName").value;
+    const newCost = document.getElementById("newCost").value;
+    const newPic = document.getElementById("newPic").value;
+    const newDescription = document.getElementById("newDescription").value;
+
+    if (newName && newCost && newDescription) {
+        const newUser = {
+            name: newName,
+            cost: newCost,
+            pic: newPic,
+            descript: newDescription
+        };
+        data.push(newUser);
+        displayResult([newUser]);
+    } else {
+        document.getElementById("result").innerText = "Please fill in all fields to add a new user.";
     }
 }
 
@@ -64,8 +93,8 @@ function displayResult(result) {
             personDiv.classList.add("person");
             personDiv.innerHTML = `
                 <h2>${person.name}</h2>
-                <p>Room: ${person.room}</p>
-                <p>Telephone: ${person.teln}</p>
+                <p>Name: ${person.name}</p>
+                <p>Cost: ${person.cost}</p>
                 <p>Description: ${person.descript}</p>
                 ${person.pic ? `<img src="${person.pic}" alt="${person.name}'s picture">` : ""}
             `;

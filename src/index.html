@@ -11,31 +11,48 @@
 </head>
 <body>
     <h1>Weihan Shan 177458</h1>
-    <img src="jpg/dan.jpg">
+    <img src="jpg/sinong.jpg">
     <div>
-        <label for="room">Enter Room Number:</label>
-        <input type="text" id="room" name="room">
-        <button onclick="lookupRoom()">Lookup</button>
+        <label for="name">Enter name:</label>
+        <input type="text" id="name" name="name">
+        <button onclick="lookupName()">Lookup</button>
     </div>
     <div>
-        <label for="teln">Enter Telephone Number:</label>
-        <input type="text" id="teln" name="teln">
-        <button onclick="lookupTeln()">Lookup</button>
+        <label for="startCost">Start Cost:</label>
+        <input type="text" id="startCost" name="startCost">
+        <label for="endCost">End Cost:</label>
+        <input type="text" id="endCost" name="endCost">
+        <button onclick="lookupCostRange()">Lookup</button>
     </div>
     <div>
-        <label for="startTeln">Start Telephone Number:</label>
-        <input type="text" id="startTeln" name="startTeln">
-        <label for="endTeln">End Telephone Number:</label>
-        <input type="text" id="endTeln" name="endTeln">
-        <button onclick="lookupTelnRange()">Lookup</button>
-    </div>
-    <div>
-        <label for="telnUpdate">Enter Telephone Number to Update:</label>
-        <input type="text" id="telnUpdate" name="telnUpdate">
+        <label for="nameUpdate">Enter Name to Update:</label>
+        <input type="text" id="nameUpdate" name="nameUpdate">
         <label for="newDescript">New Description:</label>
         <input type="text" id="newDescript" name="newDescript">
         <button onclick="updateDescription()">Update</button>
     </div>
+
+<!-- Delete user -->
+<div>
+    <label for="nameDelete">Enter Name to Delete:</label>
+    <input type="text" id="nameDelete" name="nameDelete">
+    <button onclick="deleteUser()">Delete</button>
+</div>
+
+<!-- Add new user -->
+<div>
+    <h2>Add New User</h2>
+    <label for="newName">Name:</label>
+    <input type="text" id="newName" name="newName"><br>
+    <label for="newCost">Cost:</label>
+    <input type="text" id="newCost" name="newCost"><br>
+    <label for="newPic">Picture (path):</label>
+    <input type="text" id="newPic" name="newPic"><br>
+    <label for="newDescription">Description:</label>
+    <input type="text" id="newDescription" name="newDescription"><br>
+    <button onclick="addUser()">Add User</button>
+</div>
+
     <div class="result" id="result"></div>
 
     <script src="script.js"></script>
