@@ -135,15 +135,25 @@ function displayResult(result) {
 }
 
 // Function to save data to CSV
-function saveData() {
+async function saveData() {
     const csv = jsonToCSV(data);
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'q1x.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const formData = new FormData();
+    formData.append('csvData', csv);
+
+    try {
+        const response = await fetch('update.php', {
+            method: 'POST',
+            body: formData
+        });
+        if (response.ok) {
+            const newData = await response.json();
+            data = newData;
+            displayResult(data);
+            console.log("Data saved and refreshed successfully:", data);
+        } else {
+            console.error("Failed to save data:", response.statusText);
+        }
+    } catch (error) {
+        console.error("Error saving data:", error);
+    }
 }
