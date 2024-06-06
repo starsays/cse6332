@@ -127,7 +127,7 @@ function displayResult(result) {
                 <h2>${person.name}</h2>
                 <p>Cost: ${person.cost}</p>
                 <p>Description: ${person.descript}</p>
-                ${person.pic ? `<img src="${person.pic}" alt="${person.name}'s picture">` : ""}
+                ${person.pic ? `<img src="/jpg/${person.pic}" alt="${person.name}'s picture">` : ""}
             `;
             resultDiv.appendChild(personDiv);
         });
